@@ -1,21 +1,28 @@
-version: "3.8"
+version: "3.9"
 
 services:
   postgresql:
     restart: always
-    image: postgres
-    container_name: letter
+    image: 'postgres:latest'
+    container_name: letter_db
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=mcpmwC8gGwVKr4Q9xCKZEzEgS
-      - POSTGRES_DB=letter
+      - POSTGRES_DB=letters
     ports:
-      - '5433:5432'
-#
-#  file_storage_service_app:
+      - '5437:5432'
+
+#  letter_service_app:
 #    image: 'application:latest'
 #    build:
 #      context: .
-#    container_name: file_storage_service_app
+#    container_name: letter_service_app
+#    depends_on:
+#      - letter_db
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://persons_db:5437/letters
+#      - SPRING_DATASOURCE_USERNAME=postgres
+#      - SPRING_DATASOURCE_PASSWORD=mcpmwC8gGwVKr4Q9xCKZEzEgS
+#      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 #    ports:
 #      - 8086:8086

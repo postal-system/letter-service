@@ -1,0 +1,14 @@
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://130.193.56.118:5437/letters
+#    username: postgres
+#    password: mcpmwC8gGwVKr4Q9xCKZEzEgS
+#    driver-class-name: org.postgresql.Driver
+#  jpa:
+#    database: postgresql
+#    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+#  liquibase:
+#    change-log: classpath:/db/changelog/db.changelog-master.yaml
+#    enabled: true
+#server:
+#  port: 8086

@@ -1,4 +1,4 @@
 databaseChangeLog:
   - include:
-      file: db/changelog/create_table_letter.sql
+      file: db/changelog/migration/create_table_letter.sql
 
