@@ -20,7 +20,7 @@ services:
 #    depends_on:
 #      - letter_db
 #    environment:
-#      - SPRING_DATASOURCE_URL=jdbc:postgresql://persons_db:5437/letters
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://persons_db:5432/letters
 #      - SPRING_DATASOURCE_USERNAME=postgres
 #      - SPRING_DATASOURCE_PASSWORD=mcpmwC8gGwVKr4Q9xCKZEzEgS
 #      - SPRING_JPA_HIBERNATE_DDL_AUTO=update

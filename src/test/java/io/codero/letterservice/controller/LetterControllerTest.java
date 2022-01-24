@@ -50,7 +50,8 @@ class LetterControllerTest extends AbstractControllerTest {
 
         mvc.perform(post("/letter")
                         .content(requestJson)
-                        .contentType(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON
+                        )
                 )
                 .andExpect(status().isOk())
                 .andExpect(content().json(ExpectedJson));
