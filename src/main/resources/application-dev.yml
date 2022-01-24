@@ -3,6 +3,5 @@ spring:
     url: jdbc:postgresql://130.193.56.118:5432/pejt_letter
     username: postgres
     password: mcpmwC8gGwVKr4Q9xCKZEzEgS
-    driver-class-name: org.postgresql.Driver
 server:
   port: 8086

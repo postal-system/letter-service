@@ -1,8 +1,7 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5437/letters
+    url: jdbc:postgresql://localhost:5437/pejt_letter
     username: postgres
     password: mcpmwC8gGwVKr4Q9xCKZEzEgS
-    driver-class-name: org.postgresql.Driver
 server:
   port: 8086
