@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5437/pejt_letter
+    url: jdbc:postgresql://localhost:5437/letter
     username: postgres
     password: mcpmwC8gGwVKr4Q9xCKZEzEgS
 server:
