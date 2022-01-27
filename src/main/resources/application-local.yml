@@ -1,7 +1,9 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5437/letter
+    url: jdbc:postgresql://localhost:5437/pejt_letter
     username: postgres
     password: mcpmwC8gGwVKr4Q9xCKZEzEgS
+    hikari:
+      maximum-pool-size: 3
 server:
   port: 8086

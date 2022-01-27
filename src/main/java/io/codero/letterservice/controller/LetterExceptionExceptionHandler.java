@@ -17,6 +17,6 @@ public class LetterExceptionExceptionHandler extends ResponseEntityExceptionHand
 
     @ExceptionHandler(CastIdAlreadyExistException.class)
     public ResponseEntity<?> handleIdAlreadyExistException(CastIdAlreadyExistException exception) {
-        return ResponseEntity.status(409).build();
+        return ResponseEntity.status(409).body(exception.getMessage());
     }
 }

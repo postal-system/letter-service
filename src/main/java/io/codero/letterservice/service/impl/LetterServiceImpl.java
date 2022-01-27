@@ -23,6 +23,7 @@ public class LetterServiceImpl implements LetterService {
         if (repository.existsById(letter.getId())) {
             throw new CastIdAlreadyExistException(String.format("Object with ID: %s already exist, ", letter.getId()));
         }
+        log.info("saver {} to DB",letter);
         return repository.save(letter).getId();
     }
 
