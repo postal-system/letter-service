@@ -10,7 +10,7 @@ build:
       - ./target/
     expire_in: 1 day
   script:
-    - mvn clean package
+    - mvn clean package -PtraineeshipPomTemplate
   when: manual
   allow_failure: false
 

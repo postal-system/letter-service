@@ -21,7 +21,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 class LetterControllerTest extends AbstractControllerTest {
-/*
     @Autowired
     private MockMvc mvc;
     @Autowired
@@ -194,6 +193,4 @@ class LetterControllerTest extends AbstractControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json(listResponseJson));
     }
-
- */
 }
