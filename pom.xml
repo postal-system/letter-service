@@ -11,8 +11,6 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-
-
 <!--    <groupId>io.codero</groupId>-->
     <artifactId>letter-service</artifactId>
     <version>1.0-SNAPSHOT</version>
