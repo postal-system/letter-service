@@ -5,5 +5,10 @@ spring:
     password: mcpmwC8gGwVKr4Q9xCKZEzEgS
     hikari:
       maximum-pool-size: 3
+  kafka:
+    bootstrap: "130.193.56.118:9092"
+    topic: "url"
 server:
   port: 8086
+
+
