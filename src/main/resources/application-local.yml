@@ -8,10 +8,8 @@ spring:
   kafka:
     bootstrap: "localhost:9092"
     topic: "url"
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
-
+  jpa:
+    show-sql: true
 server:
   port: 8086
 

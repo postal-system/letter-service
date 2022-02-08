@@ -7,6 +7,7 @@ import io.codero.letterservice.dto.RawLetterDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
@@ -20,8 +21,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@EmbeddedKafka(partitions = 1, brokerProperties = {"listeners=PLAINTEXT://localhost:9092", "port=9092"})
 class LetterControllerTest extends AbstractControllerTest {
-    /*
+
     @Autowired
     private MockMvc mvc;
     @Autowired
@@ -194,5 +196,4 @@ class LetterControllerTest extends AbstractControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json(listResponseJson));
     }
-     */
 }
