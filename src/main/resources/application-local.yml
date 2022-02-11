@@ -5,11 +5,10 @@ spring:
     password: mcpmwC8gGwVKr4Q9xCKZEzEgS
     hikari:
       maximum-pool-size: 3
-  kafka:
-    bootstrap: "localhost:9092"
-    topic: "url"
   jpa:
     show-sql: true
 server:
   port: 8086
-
+interceptor:
+  bootstrap: "localhost:9092"
+  topic: "url"
