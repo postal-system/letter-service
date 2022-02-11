@@ -11,7 +11,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <!--    <groupId>io.codero</groupId>-->
+<!--    <groupId>io.codero</groupId>-->
     <artifactId>letter-service</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -21,24 +21,11 @@
     </properties>
 
     <dependencies>
-        <!--starer interceptor-->
         <dependency>
             <groupId>io.codero</groupId>
             <artifactId>interceptor-starter</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>kafka</artifactId>
-            <version>1.16.3</version>
-            <scope>test</scope>
-        </dependency>
-        <!--        -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -203,6 +190,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+<!--                <version>${project.parent.version}</version>-->
                 <executions>
                     <execution>
                         <goals>
