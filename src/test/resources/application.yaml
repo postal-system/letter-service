@@ -1,0 +1,3 @@
+interceptor:
+  bootstrap: "localhost:9092"
+  topic: "url"
