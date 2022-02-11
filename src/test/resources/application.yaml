@@ -1,3 +1,4 @@
 interceptor:
-  bootstrap: "localhost:9092"
-  topic: "url"
+  kafka:
+    bootstrap: "localhost:9092"
+    topic: "url"
