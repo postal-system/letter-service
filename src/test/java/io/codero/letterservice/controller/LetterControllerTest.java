@@ -26,8 +26,11 @@ class LetterControllerTest extends AbstractControllerTest {
 
     @Autowired
     private MockMvc mvc;
+
     @Autowired
     private ObjectMapper objectMapper;
+
+    private static final String URL = "/letters";
 
     private final UUID id = UUID.randomUUID();
 
@@ -51,7 +54,7 @@ class LetterControllerTest extends AbstractControllerTest {
         String requestJson = objectMapper.writeValueAsString(getLetterDto());
         String ExpectedJson = objectMapper.writeValueAsString(id);
 
-        mvc.perform(post("/letter")
+        mvc.perform(post(URL)
                         .content(requestJson)
                         .contentType(MediaType.APPLICATION_JSON
                         )
@@ -65,7 +68,7 @@ class LetterControllerTest extends AbstractControllerTest {
         String requestJson = objectMapper.writeValueAsString(getLetterDto());
         String ExpectedJson = objectMapper.writeValueAsString(id);
 
-        mvc.perform(post("/letter")
+        mvc.perform(post(URL)
                         .content(requestJson)
                         .contentType(MediaType.APPLICATION_JSON)
                 )
@@ -73,7 +76,7 @@ class LetterControllerTest extends AbstractControllerTest {
                 .andExpect(content().json(ExpectedJson));
 
 
-        mvc.perform(post("/letter")
+        mvc.perform(post(URL)
                         .content(requestJson)
                         .contentType(MediaType.APPLICATION_JSON)
                 )
@@ -84,20 +87,20 @@ class LetterControllerTest extends AbstractControllerTest {
     void shouldReturnDtoEqualsDtoExpected() throws Exception {
         String jsonDto = objectMapper.writeValueAsString(getLetterDto());
 
-        mvc.perform(post("/letter")
+        mvc.perform(post(URL)
                         .content(jsonDto)
                         .contentType(MediaType.APPLICATION_JSON)
                 )
                 .andExpect(status().isOk());
 
-        mvc.perform(get("/letter/" + id))
+        mvc.perform(get(URL + "/" + id))
                 .andExpect(status().isOk())
                 .andExpect(content().json(jsonDto));
     }
 
     @Test
     void shouldReturn404ifNotExists() throws Exception {
-        mvc.perform(get("/letter/" + id))
+        mvc.perform(get(URL + "/" + id))
                 .andDo(print())
                 .andExpect(status().isNotFound());
     }
@@ -105,7 +108,7 @@ class LetterControllerTest extends AbstractControllerTest {
     @Test
     void shouldObjectUpdatedIfAllRight() throws Exception {
         String jsonDto = objectMapper.writeValueAsString(getLetterDto());
-        mvc.perform(post("/letter")
+        mvc.perform(post(URL)
                         .content(jsonDto)
                         .contentType(MediaType.APPLICATION_JSON)
                 )
@@ -115,12 +118,12 @@ class LetterControllerTest extends AbstractControllerTest {
         newDto.setContent("new content");
         String newJsonDto = objectMapper.writeValueAsString(newDto);
 
-        mvc.perform(put("/letter")
+        mvc.perform(put(URL)
                         .content(newJsonDto)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
 
-        mvc.perform(get("/letter/" + id))
+        mvc.perform(get(URL + "/" + id))
                 .andExpect(status().isOk())
                 .andExpect(content().json(newJsonDto));
     }
@@ -131,7 +134,7 @@ class LetterControllerTest extends AbstractControllerTest {
         newDto.setContent("new content");
         String newJsonDto = objectMapper.writeValueAsString(newDto);
 
-        mvc.perform(put("/letter")
+        mvc.perform(put(URL)
                         .content(newJsonDto)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
@@ -142,17 +145,17 @@ class LetterControllerTest extends AbstractControllerTest {
         String requestJson = objectMapper.writeValueAsString(getLetterDto());
         String ExpectedJson = objectMapper.writeValueAsString(id);
 
-        mvc.perform(post("/letter")
+        mvc.perform(post(URL)
                         .content(requestJson)
                         .contentType(MediaType.APPLICATION_JSON)
                 )
                 .andExpect(status().isOk())
                 .andExpect(content().json(ExpectedJson));
 
-        mvc.perform(delete("/letter" + "/" + id))
+        mvc.perform(delete(URL + "/" + id))
                 .andExpect(status().isOk());
 
-        mvc.perform(get("/letter/" + id))
+        mvc.perform(get(URL + "/" + id))
                 .andExpect(status().isNotFound());
     }
 
@@ -161,29 +164,29 @@ class LetterControllerTest extends AbstractControllerTest {
         String requestJson = objectMapper.writeValueAsString(getLetterDto());
         String ExpectedJson = objectMapper.writeValueAsString(id);
 
-        mvc.perform(post("/letter")
+        mvc.perform(post(URL)
                         .content(requestJson)
                         .contentType(MediaType.APPLICATION_JSON)
                 )
                 .andExpect(status().isOk())
                 .andExpect(content().json(ExpectedJson));
 
-        mvc.perform(delete("/letter"))
+        mvc.perform(delete(URL))
                 .andExpect(status().isOk());
 
         String emptyListJson = objectMapper.writeValueAsString(List.<LetterDto>of());
 
-        mvc.perform(get("/letter"))
+        mvc.perform(get(URL))
                 .andExpect(status().isOk())
                 .andExpect(content().json(emptyListJson));
     }
 
     @Test
-    void shouldReturnListLetterDto() throws Exception {
+    void shouldReturnListLetterDtoIfWasAddedSomeThing() throws Exception {
         String requestJson = objectMapper.writeValueAsString(getLetterDto());
         String ExpectedJson = objectMapper.writeValueAsString(id);
 
-        mvc.perform(post("/letter")
+        mvc.perform(post(URL)
                         .content(requestJson)
                         .contentType(MediaType.APPLICATION_JSON)
                 )
@@ -192,7 +195,7 @@ class LetterControllerTest extends AbstractControllerTest {
 
         String listResponseJson = objectMapper.writeValueAsString(List.of(getLetterDto()));
 
-        mvc.perform(get("/letter"))
+        mvc.perform(get(URL))
                 .andExpect(status().isOk())
                 .andExpect(content().json(listResponseJson));
     }

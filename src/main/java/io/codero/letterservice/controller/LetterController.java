@@ -19,13 +19,19 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "/letter")
+@RequestMapping(value = "/letters")
 public class LetterController {
     private final LetterFacade facade;
 
     @PostMapping
     public UUID save(@RequestBody LetterDto dto) {
         return facade.save(dto);
+    }
+
+
+    @PostMapping("/list-id")
+    public ResponseEntity<List<LetterDto>> getByListId(@RequestBody List<UUID> ids) {
+        return ResponseEntity.ok().body(facade.getByListId(ids));
     }
 
     @GetMapping("/{id}")
@@ -52,4 +58,5 @@ public class LetterController {
     public void deleteAll() {
         facade.deleteAll();
     }
+
 }

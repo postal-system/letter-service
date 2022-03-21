@@ -30,7 +30,15 @@ public class LetterFacade {
     }
 
     public List<LetterDto> getAll() {
-        return letterService.getAll().stream().map(letterMapper::toDto).collect(Collectors.toList());
+        return letterService.getAll().stream()
+                .map(letterMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<LetterDto> getByListId(List<UUID> ids) {
+        return letterService.getByListId(ids).stream()
+                .map(letterMapper::toDto)
+                .collect(Collectors.toList());
     }
 
     public void update(LetterDto dto) {

@@ -23,7 +23,7 @@ public class LetterServiceImpl implements LetterService {
         if (repository.existsById(letter.getId())) {
             throw new CastIdAlreadyExistException(String.format("Object with ID: %s already exist, ", letter.getId()));
         }
-        log.info("save {} to DB",letter);
+        log.info("save {} to DB", letter);
         return repository.save(letter).getId();
     }
 
@@ -35,6 +35,11 @@ public class LetterServiceImpl implements LetterService {
     @Override
     public List<Letter> getAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public List<Letter> getByListId(List<UUID> ids) {
+        return repository.findAllById(ids);
     }
 
     @Override

@@ -17,4 +17,7 @@ public interface LetterService {
     void deleteAll();
 
     List<Letter> getAll();
+
+    List<Letter> getByListId(List<UUID> ids);
+
 }
