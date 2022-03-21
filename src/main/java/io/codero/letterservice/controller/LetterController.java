@@ -19,7 +19,7 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "/letters")
+@RequestMapping(value = "/api/letters")
 public class LetterController {
     private final LetterFacade facade;
 

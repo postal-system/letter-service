@@ -30,7 +30,7 @@ class LetterControllerTest extends AbstractControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    private static final String URL = "/letters";
+    private static final String URL = "/api/letters";
 
     private final UUID id = UUID.randomUUID();
 
