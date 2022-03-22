@@ -29,7 +29,7 @@ public class LetterController {
     }
 
 
-    @PostMapping("/list-id")
+    @PostMapping("/ids")
     public ResponseEntity<List<LetterDto>> getByListId(@RequestBody List<UUID> ids) {
         return ResponseEntity.ok().body(facade.getByListId(ids));
     }
