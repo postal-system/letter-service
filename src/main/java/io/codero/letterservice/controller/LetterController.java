@@ -28,20 +28,19 @@ public class LetterController {
         return facade.save(dto);
     }
 
-
     @PostMapping("/ids")
-    public ResponseEntity<List<LetterDto>> getByListId(@RequestBody List<UUID> ids) {
-        return ResponseEntity.ok().body(facade.getByListId(ids));
+    public List<LetterDto> getByListId(@RequestBody List<UUID> ids) {
+        return facade.getByListId(ids);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<LetterDto> getById(@PathVariable("id") UUID id) {
-        return ResponseEntity.ok().body(facade.getById(id));
+    public LetterDto getById(@PathVariable("id") UUID id) {
+        return facade.getById(id);
     }
 
     @GetMapping
-    public ResponseEntity<List<LetterDto>> getAll() {
-        return ResponseEntity.ok().body(facade.getAll());
+    public List<LetterDto> getAll() {
+        return facade.getAll();
     }
 
     @PutMapping
@@ -58,5 +57,4 @@ public class LetterController {
     public void deleteAll() {
         facade.deleteAll();
     }
-
 }
