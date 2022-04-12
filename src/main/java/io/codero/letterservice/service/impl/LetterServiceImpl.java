@@ -21,7 +21,7 @@ public class LetterServiceImpl implements LetterService {
     @Override
     public UUID save(Letter letter) {
         if (repository.existsById(letter.getId())) {
-            throw new IdAlreadyExistException(String.format("Object with ID: %s already exist, ", letter.getId()));
+            throw new IdAlreadyExistException(String.format("Letter with ID: %s already exist, ", letter.getId()));
         }
         log.info("save {} to DB", letter);
         return repository.save(letter).getId();
@@ -29,7 +29,8 @@ public class LetterServiceImpl implements LetterService {
 
     @Override
     public Letter getById(UUID id) {
-        return repository.findById(id).orElseThrow(() -> new NotFoundException("Not found by ID: " + id));
+        return repository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Letter with ID: %s not found " + id));
     }
 
     @Override
@@ -45,7 +46,7 @@ public class LetterServiceImpl implements LetterService {
     @Override
     public void update(Letter letter) {
         if (!repository.existsById(letter.getId())) {
-            throw new NotFoundException(String.format("Object with ID: %s cannot by update", letter.getId()));
+            throw new NotFoundException(String.format("Letter with ID: %s cannot be update", letter.getId()));
         }
         repository.save(letter);
     }
