@@ -1,8 +1,8 @@
 package io.codero.letterservice.service.impl;
 
 import io.codero.letterservice.entity.Letter;
-import io.codero.letterservice.exception.CastIdAlreadyExistException;
-import io.codero.letterservice.exception.CastNotFoundException;
+import io.codero.letterservice.exception.IdAlreadyExistException;
+import io.codero.letterservice.exception.NotFoundException;
 import io.codero.letterservice.repository.LetterRepository;
 import io.codero.letterservice.service.LetterService;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +21,7 @@ public class LetterServiceImpl implements LetterService {
     @Override
     public UUID save(Letter letter) {
         if (repository.existsById(letter.getId())) {
-            throw new CastIdAlreadyExistException(String.format("Object with ID: %s already exist, ", letter.getId()));
+            throw new IdAlreadyExistException(String.format("Object with ID: %s already exist, ", letter.getId()));
         }
         log.info("save {} to DB", letter);
         return repository.save(letter).getId();
@@ -29,7 +29,7 @@ public class LetterServiceImpl implements LetterService {
 
     @Override
     public Letter getById(UUID id) {
-        return repository.findById(id).orElseThrow(() -> new CastNotFoundException("Not found by ID: " + id));
+        return repository.findById(id).orElseThrow(() -> new NotFoundException("Not found by ID: " + id));
     }
 
     @Override
@@ -45,7 +45,7 @@ public class LetterServiceImpl implements LetterService {
     @Override
     public void update(Letter letter) {
         if (!repository.existsById(letter.getId())) {
-            throw new CastNotFoundException(String.format("Object with ID: %s cannot by update", letter.getId()));
+            throw new NotFoundException(String.format("Object with ID: %s cannot by update", letter.getId()));
         }
         repository.save(letter);
     }
