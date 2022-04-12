@@ -19,7 +19,7 @@ public class LetterServiceImpl implements LetterService {
     private final LetterRepository repository;
 
     @Override
-    public UUID save(Letter letter) {
+    public synchronized UUID save(Letter letter) {
         if (repository.existsById(letter.getId())) {
             throw new IdAlreadyExistException(String.format("Letter with ID: %s already exist, ", letter.getId()));
         }
